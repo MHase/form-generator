@@ -23,7 +23,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test --watchAll=false"
+      "pre-commit": "CI=true npm run test"
     }
   },
   "eslintConfig": {
