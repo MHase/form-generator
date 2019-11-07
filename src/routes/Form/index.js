@@ -1,21 +1,80 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { navigate } from '@reach/router';
 
-import { createStructure } from '../../store/form';
+import { updateField, createStructure } from '../../store/form';
+
+import FormField from '../../components/FormField';
+import Button from '../../components/Button';
+import Json from '../../components/Json';
 
 import { fields } from '../../sampleForm.json';
 
+import validateValues from '../../utils/validateValues.js';
+
+import './style.scss';
+
 const Form = () => {
+  const [errors, setErrors] = useState({});
   const { values, structure } = useSelector(state => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
     !Object.values(structure).length && dispatch(createStructure(fields));
-    console.log(values); // TODO: remove console.log
-  }, [dispatch, structure, values]);
+  }, [dispatch, structure]);
+
+  const onChange = useCallback(
+    (name, value) => {
+      dispatch(
+        updateField({
+          [name]: value,
+        })
+      );
+    },
+    [dispatch]
+  );
+
+  const validate = useCallback(
+    (name, value) => {
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        ...validateValues({ [name]: value }, structure),
+      }));
+    },
+    [structure]
+  );
+
+  const submit = e => {
+    e.preventDefault();
+
+    const submitErrors = validateValues(values, structure);
+    const errorsCount = Object.values(submitErrors).filter(err => err && err);
+
+    errorsCount.length ? setErrors(submitErrors) : navigate('/results');
+  };
 
   return (
-    <div className="Form" />
+    <div className="Form">
+      <form onSubmit={submit} noValidate className="Form__container">
+        {fields.map((field, i) => {
+          return (
+            <FormField
+              key={i}
+              error={errors[field.name]}
+              onChange={onChange}
+              onBlur={validate}
+              {...(field.dependant && {
+                dependantValue: values[field.dependant],
+              })}
+              {...field}
+            />
+          );
+        })}
+        <Button type="submit">submit</Button>
+      </form>
+
+      <Json value={values} className="Form__results" />
+    </div>
   );
 };
 
