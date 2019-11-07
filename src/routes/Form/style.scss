@@ -1,0 +1,32 @@
+@import '../../style/media';
+
+.Form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 4px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    & > * {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__results {
+    margin-top: 32px;
+  }
+
+  @media #{$screen-max-sm} {
+    &__container {
+      width: 100%;
+    }
+  }
+}
