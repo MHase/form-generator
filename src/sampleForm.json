@@ -1,0 +1,45 @@
+{
+  "fields": [
+    {
+      "name": "Name",
+      "type": "text",
+      "minLength": 4,
+      "required": true
+    },
+    { "name": "Nickname", "type": "text" },
+    { "name": "Email", "type": "email", "required": true },
+    {
+      "name": "Field",
+      "type": "select",
+      "required": true,
+      "options": [
+        { "label": "IT", "value": "it" },
+        { "label": "Product", "value": "product" },
+        { "label": "Content", "value": "content" }
+      ]
+    },
+    {
+      "name": "Position",
+      "type": "select",
+      "dependant": "Field",
+      "required": true,
+      "options": {
+        "it": [
+          { "label": "Front-end developer", "value": "fe_dev" },
+          { "label": "Back-end developer", "value": "be_dev" },
+          { "label": "Devops", "value": "devops" },
+          { "label": "Webmaster", "value": "webmaster" }
+        ],
+        "product": [
+          { "label": "Product owner", "value": "prod_owner" },
+          { "label": "UX Designer", "value": "ux_des" },
+          { "label": "UI Designer", "value": "ui_des" }
+        ],
+        "content": [
+          { "label": "Junior Copywriter", "value": "jr_copy" },
+          { "label": "Senior Copywriter", "value": "sr_copy" }
+        ]
+      }
+    }
+  ]
+}

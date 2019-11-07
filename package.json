@@ -16,8 +16,8 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "CI=true npm run test src/formStructure.test.js && react-scripts start",
+    "build": "CI=true npm run test src/formStructure.test.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
