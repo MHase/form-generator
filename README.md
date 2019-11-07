@@ -43,7 +43,7 @@ Right now structure builder covers:
 
 - [x] Input (text, email)
 - [x] Select
-- [x] Radio button
+- [ ] Radio button
 - [ ] Checkbox
 - [ ] ...
 
