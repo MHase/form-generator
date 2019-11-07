@@ -1,0 +1,22 @@
+@import './reset';
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: .3;
+}

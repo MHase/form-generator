@@ -8,6 +8,13 @@ import formReducer from './store/form';
 
 import App from './components/App';
 
+import './style/main.scss';
+
+WebFont.load({
+  google: {
+    families: ['Roboto:400,500&display=swap'],
+  },
+});
 
 const store = createStore(formReducer);
 
