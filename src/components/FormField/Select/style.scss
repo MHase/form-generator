@@ -1,0 +1,60 @@
+@import '../../../style/colors';
+
+.Select {
+  position: relative;
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: .3em solid $c_black;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
+    content: '';
+    transform: translateY(-50%);
+    transition: transform 200ms cubic-bezier(.4, 0, .2, 1) 0ms;
+    transform-origin: center top;
+  }
+
+  &--open {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 8px 0;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow:
+      0 5px 5px -3px rgba($c_black, .2),
+      0 8px 10px 1px rgba($c_black, .14),
+      0 3px 14px 2px rgba($c_black, .12);
+
+    &-item {
+      padding: 6px 16px;
+      line-height: 1.5;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($c_black, .08);
+      }
+
+      &--selected {
+        background-color: rgba($c_black, .14);
+      }
+    }
+  }
+}
