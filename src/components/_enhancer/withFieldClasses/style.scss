@@ -1,0 +1,92 @@
+@import '../../../style/media';
+@import '../../../style/colors';
+
+.Field {
+  $_r: &;
+
+  &__container {
+    position: relative;
+
+    &--focused {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &--filled,
+    &--focused {
+      #{$_r}__label {
+        transform: translate(0, 1.5px) scale(.75);
+      }
+    }
+
+    &--error {
+      &::before {
+        border-color: $error;
+      }
+
+      #{$_r}__label {
+        color: $error;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      border-bottom: 1px solid rgba($c_black, .42);
+      content: '';
+      transition: border-bottom 200ms cubic-bezier(.4, 0, .2, 1) 0ms;
+    }
+
+    &::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid $accent;
+      content: '';
+      transform: scaleX(0);
+      transition: transform 200ms cubic-bezier(0, 0, .2, 1);
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 6px 0 7px;
+    background: none;
+  }
+
+  &__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: translate(0, 24px) scale(1);
+    transition: .2s ease all;
+    transform-origin: top left;
+  }
+
+  &__content {
+    padding-top: 1rem;
+  }
+
+  &__error {
+    min-height: 1em;
+    margin-top: 8px;
+    font-size: .75rem;
+    color: $error;
+  }
+
+  &:hover {
+    &::before {
+      border-bottom: 2px solid rgba($c_black, .87);
+    }
+  }
+
+  @media #{$screen-max-sm} {
+    width: 100%;
+  }
+}
