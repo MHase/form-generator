@@ -37,7 +37,7 @@ To populate form with dynamic data you have to pass proper JSON structure with a
 <div align="center">
 	<img src="https://raw.githubusercontent.com/testing-library/react-testing-library/master/other/goat.png"  	alt="React Testing Library" />
 	<p><a href="https://github.com/testing-library/react-testing-library">React Testing Library</a></p>
-<div>
+</div>
 
 Right now structure builder covers:
 
