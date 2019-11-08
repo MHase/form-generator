@@ -16,9 +16,10 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
-    "start": "CI=true npm run test src/formStructure.test.js && react-scripts start",
-    "build": "CI=true npm run test src/formStructure.test.js && react-scripts build",
-    "test": "react-scripts test",
+    "start": "yarn test:noWatch src/formStructure.test.js && react-scripts start",
+    "build": "yarn test:noWatch src/formStructure.test.js && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "test:noWatch": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "husky": {
