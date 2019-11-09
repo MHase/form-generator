@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
-import { updateField, createStructure } from '../../store/form';
+import { updateField } from '../../store/form';
 
 import FormField from '../../components/FormField';
 import Button from '../../components/Button';
