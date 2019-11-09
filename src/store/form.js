@@ -1,11 +1,12 @@
+import formStoreStructure from '../utils/formStoreStructure';
+
 export const TYPES = {
   updateForm: 'UPDATE_FORM',
-  createStructure: 'CREATE_STRUCTURE',
+  resetForm: 'RESET_FORM',
 };
 
 const initialState = {
-  values: {},
-  structure: {},
+  ...formStoreStructure(),
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,12 +19,8 @@ const reducer = (state = initialState, action) => {
           ...action.payload,
         },
       };
-    case TYPES.createStructure:
-      return {
-        ...state,
-        structure: action.payload.structure,
-        values: action.payload.values,
-      };
+    case TYPES.resetForm:
+      return initialState;
     default:
       return state;
   }
@@ -34,21 +31,8 @@ export const updateField = payload => ({
   payload,
 });
 
-export const createStructure = payload => {
-  const structure = {};
-  const values = {};
-  payload.forEach(field => (structure[field.name] = { ...field }));
-  payload.forEach(
-    field => (values[field.name] = structure[field.name].value || '')
-  );
-
-  return {
-    type: TYPES.createStructure,
-    payload: {
-      structure,
-      values,
-    },
-  };
-};
-
+export const clearValues = {
+  type: TYPES.resetForm,
+}
+  
 export default reducer;

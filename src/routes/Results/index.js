@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { navigate } from '@reach/router';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Json from '../../components/Json';
+
+import { clearValues } from '../../store/form';
 
 import './style.scss';
 
 const Form = () => {
   const { values } = useSelector(state => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    !Object.values(values).length && navigate('/');
-  }, [values]);
+    return () => dispatch(clearValues);
+  }, [dispatch]);
 
   return (
     <div className="Results">

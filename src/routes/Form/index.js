@@ -8,8 +8,6 @@ import FormField from '../../components/FormField';
 import Button from '../../components/Button';
 import Json from '../../components/Json';
 
-import { fields } from '../../sampleForm.json';
-
 import validateValues from '../../utils/validateValues.js';
 
 import './style.scss';
@@ -18,10 +16,6 @@ const Form = () => {
   const [errors, setErrors] = useState({});
   const { values, structure } = useSelector(state => state);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    !Object.values(structure).length && dispatch(createStructure(fields));
-  }, [dispatch, structure]);
 
   const onChange = useCallback(
     (name, value) => {
@@ -56,7 +50,7 @@ const Form = () => {
   return (
     <div className="Form">
       <form onSubmit={submit} noValidate className="Form__container">
-        {fields.map((field, i) => {
+        {Object.values(structure).map((field, i) => {
           return (
             <FormField
               key={i}
