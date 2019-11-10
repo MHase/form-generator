@@ -14,7 +14,7 @@ describe('Form reducer', () => {
 
 
   it(`handles ${TYPES.resetForm} correctly`, () => {
-    const actual = reducer(undefined, clearValues);
+    const actual = reducer(undefined, clearValues());
 
     expect(actual).toMatchSnapshot();
   });

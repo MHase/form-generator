@@ -12,7 +12,7 @@ const Form = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    return () => dispatch(clearValues);
+    return () => dispatch(clearValues());
   }, [dispatch]);
 
   return (
