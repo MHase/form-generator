@@ -19,8 +19,8 @@ describe('Select Component', () => {
       { label: 'Product', value: 'product' },
       { label: 'Content', value: 'content' },
     ],
-    onChange: () => {},
-    onBlur: () => {},
+    onChange: jest.fn(),
+    onBlur: jest.fn(),
   };
 
   it('Default Select renders without crashing', () => {
@@ -49,27 +49,16 @@ describe('Select Component', () => {
       expect(container.querySelector('.Select__list').toBeInTheDocument()));
   });
 
-  it('Default Select change state value after item click', async () => {
+  it('Default Select change should fire onChange and onBlur actions', async () => {
     const { container } = render(<Select {...props} />);
     fireEvent.click(container.querySelector('.Select'));
 
     const items = await waitForElement(() =>
       container.querySelectorAll('.Select__list-item')
     );
-
-    let selectedItems = null;
-    selectedItems = await waitForElement(() =>
-      container.querySelectorAll('.Select__list-item--selected')
-    );
-    expect(items).toHaveLength(3);
-    expect(selectedItems).toHaveLength(0);
-
     fireEvent.click(items[0]);
-    fireEvent.click(container.querySelector('.Select'));
 
-    selectedItems = await waitForElement(() =>
-      container.querySelectorAll('.Select__list-item--selected')
-    );
-    expect(selectedItems).toHaveLength(1);
+    expect(props.onChange).toHaveBeenCalled();
+    expect(props.onBlur).toHaveBeenCalled();
   });
 });

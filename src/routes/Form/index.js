@@ -61,6 +61,7 @@ const Form = () => {
                 dependantValue: values[field.dependant],
               })}
               {...field}
+              value={values[field.name]}
             />
           );
         })}
