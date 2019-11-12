@@ -1,11 +1,11 @@
 import formStoreStructure from '../utils/formStoreStructure';
 
-export const TYPES = {
+const TYPES = {
   updateForm: 'UPDATE_FORM',
   resetForm: 'RESET_FORM',
 };
 
-const initialState = {
+export const initialState = {
   ...formStoreStructure(),
 };
 

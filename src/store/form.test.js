@@ -1,21 +1,31 @@
-import reducer, { TYPES, updateField, clearValues } from './form';
+import reducer, { updateField, clearValues, initialState } from './form';
 
 describe('Form reducer', () => {
+  const state = {
+    values: {
+      name: '',
+    },
+  };
+
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toMatchSnapshot();
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it(`handles ${TYPES.updateForm} correctly`, () => {
-    const payload = { name: 'Maciek' };
-    const actual = reducer(undefined, updateField(payload));
+  it(`handles UPDATE_FORM correctly`, () => {
+    const payload = { name: 'Maciek', nickname: 'Coder' };
+    const actual = reducer(state, updateField(payload));
 
-    expect(actual).toMatchSnapshot();
+    expect(actual).toEqual({
+      values: {
+        name: 'Maciek',
+        nickname: 'Coder'
+      }
+    });
   });
 
+  it(`handles RESET_FORM correctly`, () => {
+    const actual = reducer(state, clearValues());
 
-  it(`handles ${TYPES.resetForm} correctly`, () => {
-    const actual = reducer(undefined, clearValues());
-
-    expect(actual).toMatchSnapshot();
+    expect(actual).toEqual(initialState);
   });
 });
