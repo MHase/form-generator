@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from '@reach/router';
 
-import { updateField, createStructure } from '../../store/form';
+import { updateField } from '../../store/form';
 
 import FormField from '../../components/FormField';
 import Button from '../../components/Button';
 import Json from '../../components/Json';
 
-import { fields } from '../../sampleForm.json';
-
-import validateValues from '../../utils/validateValues.js';
+import validateValues from '../../utils/validateValues';
 
 import './style.scss';
 
@@ -18,10 +16,6 @@ const Form = () => {
   const [errors, setErrors] = useState({});
   const { values, structure } = useSelector(state => state);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    !Object.values(structure).length && dispatch(createStructure(fields));
-  }, [dispatch, structure]);
 
   const onChange = useCallback(
     (name, value) => {
@@ -56,7 +50,7 @@ const Form = () => {
   return (
     <div className="Form">
       <form onSubmit={submit} noValidate className="Form__container">
-        {fields.map((field, i) => {
+        {Object.values(structure).map((field, i) => {
           return (
             <FormField
               key={i}
@@ -67,6 +61,7 @@ const Form = () => {
                 dependantValue: values[field.dependant],
               })}
               {...field}
+              value={values[field.name]}
             />
           );
         })}

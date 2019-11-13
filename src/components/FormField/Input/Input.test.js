@@ -13,21 +13,14 @@ describe('Input Component', () => {
     onChange: () => {},
   };
 
-  it('Default Input renders in isolation without crashing', () => {
+  it('renders in isolation without crashing', () => {
     render(<Input {...props} />);
   });
 
-  it('Default Input renders label using name prop', async () => {
+  it('renders label using name prop', async () => {
     const { getByText } = render(<Input {...props} />);
     await (() => {
       expect(getByText('Nickname')).toBeInTheDocument();
-    });
-  });
-
-  it('Default Input renders label with * when required', async () => {
-    const { getByText } = render(<Input {...props} required={true} />);
-    await (() => {
-      expect(getByText('Nickname*')).toBeInTheDocument();
     });
   });
 });

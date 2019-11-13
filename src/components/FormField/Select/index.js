@@ -40,17 +40,13 @@ const Select = ({
 }) => {
   const [optionsVisibility, setOptionsVisibility] = useState(false);
   const customOptions = dependant ? options[dependantValue] || [] : options;
-
-  const [selectedItem, setselectedItem] = useState(
-    customOptions.find(opt => opt.value === value) || {}
-  );
+  const selectedItem = customOptions.find(opt => opt.value === value) || {};
 
   const wrapperRef = useRef();
   useOutsideClick(wrapperRef, () => setOptionsVisibility(false));
 
   const handleChange = ({ label, value }) => {
     onChange(name, value);
-    setselectedItem({ label, value });
     setOptionsVisibility(false);
     onBlur(name, value);
   };
@@ -59,7 +55,6 @@ const Select = ({
     if (customOptions.length && dependant) {
       onChange(name, '');
       onBlur(name, '');
-      setselectedItem({});
     }
   }, [
     dependantValue,
@@ -68,7 +63,6 @@ const Select = ({
     name,
     onBlur,
     onChange,
-    value,
   ]);
 
   useEffect(() => {

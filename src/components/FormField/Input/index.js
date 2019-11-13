@@ -21,7 +21,6 @@ const defaultProps = {
 
 const Input = ({ defineClasses, error, onChange, onBlur, value, ...props }) => {
   const [focused, setFocused] = useState(false);
-  const [inputValue, setInputValue] = useState(value);
 
   const handleBlur = e => {
     onBlur(props.name, e.target.value);
@@ -30,16 +29,15 @@ const Input = ({ defineClasses, error, onChange, onBlur, value, ...props }) => {
 
   const handleChange = e => {
     onChange(props.name, e.target.value);
-    setInputValue(e.target.value);
   };
 
   useEffect(() => {
     defineClasses({
       focused,
-      filled: focused || inputValue,
+      filled: focused || value,
       error,
     });
-  }, [defineClasses, focused, inputValue, error]);
+  }, [defineClasses, focused, value, error]);
 
   return (
     <input
@@ -47,7 +45,7 @@ const Input = ({ defineClasses, error, onChange, onBlur, value, ...props }) => {
       onBlur={handleBlur}
       onFocus={() => setFocused(true)}
       {...props}
-      value={inputValue}
+      value={value}
     />
   );
 };
