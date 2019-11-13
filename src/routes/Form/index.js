@@ -8,7 +8,7 @@ import FormField from '../../components/FormField';
 import Button from '../../components/Button';
 import Json from '../../components/Json';
 
-import validateValues from '../../utils/validateValues.js';
+import validateValues from '../../utils/validateValues';
 
 import './style.scss';
 
