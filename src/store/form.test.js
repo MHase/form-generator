@@ -18,8 +18,8 @@ describe('Form reducer', () => {
     expect(actual).toEqual({
       values: {
         name: 'Maciek',
-        nickname: 'Coder'
-      }
+        nickname: 'Coder',
+      },
     });
   });
 

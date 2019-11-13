@@ -11,7 +11,7 @@ describe('withFieldClasses enhancer', () => {
     name: 'Street',
     required: true,
     error: 'This field is required',
-  }
+  };
 
   const Component = withFieldClasses(TestComponent);
 

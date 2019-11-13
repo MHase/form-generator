@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import reducer from '../store/form';
 
 export const renderWithRedux = (
@@ -9,7 +9,7 @@ export const renderWithRedux = (
   { initialState, store = createStore(reducer, initialState) } = {}
 ) => {
   return {
-  ...render(<Provider store={store}>{component}</Provider>),
-  store,
-  }
-}
+    ...render(<Provider store={store}>{component}</Provider>),
+    store,
+  };
+};
