@@ -50,21 +50,19 @@ const Form = () => {
   return (
     <div className="Form">
       <form onSubmit={submit} noValidate className="Form__container">
-        {Object.values(structure).map((field, i) => {
-          return (
-            <FormField
-              key={i}
-              error={errors[field.name]}
-              onChange={onChange}
-              onBlur={validate}
-              {...(field.dependant && {
-                dependantValue: values[field.dependant],
-              })}
-              {...field}
-              value={values[field.name]}
-            />
-          );
-        })}
+        {Object.values(structure).map(field => (
+          <FormField
+            key={field.name}
+            error={errors[field.name]}
+            onChange={onChange}
+            onBlur={validate}
+            {...(field.dependant && {
+              dependantValue: values[field.dependant],
+            })}
+            {...field}
+            value={values[field.name]}
+          />
+        ))}
         <Button type="submit">submit</Button>
       </form>
 
