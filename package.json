@@ -19,7 +19,7 @@
     "start": "yarn test:noWatch src/formStructure.test.js && react-scripts start",
     "build": "yarn test:noWatch src/formStructure.test.js && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:noWatch": "CI=true yarn test --env=jsdom",
+    "test:noWatch": "yarn test --env=jsdom --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "husky": {
