@@ -76,6 +76,8 @@ const Select = ({
 
   return (
     <div
+      role="listbox"
+      tabIndex={0}
       ref={wrapperRef}
       className={cn('Select', { 'Select--open': optionsVisibility })}
       onClick={() =>
@@ -92,6 +94,8 @@ const Select = ({
         <ul className="Select__list" data-testid="options-wrapper">
           {customOptions.map((item, i) => (
             <li
+              role="option"
+              aria-selected={selectedItem.value}
               className={cn('Select__list-item', {
                 'Select__list-item--selected':
                   item.value === selectedItem.value,
