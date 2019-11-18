@@ -34,5 +34,5 @@ export const updateField = payload => ({
 export const clearValues = () => ({
   type: TYPES.resetForm,
 });
-  
+
 export default reducer;

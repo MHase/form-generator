@@ -40,13 +40,7 @@ const Input = ({ defineClasses, error, onChange, onBlur, value, ...props }) => {
   }, [defineClasses, focused, value, error]);
 
   return (
-    <input
-      onChange={handleChange}
-      onBlur={handleBlur}
-      onFocus={() => setFocused(true)}
-      {...props}
-      value={value}
-    />
+    <input onChange={handleChange} onBlur={handleBlur} onFocus={() => setFocused(true)} {...props} value={value} />
   );
 };
 

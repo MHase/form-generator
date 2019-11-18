@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  cleanup,
-  render,
-  fireEvent,
-  waitForElement,
-} from '@testing-library/react';
+import { cleanup, render, fireEvent, waitForElement } from '@testing-library/react';
 
 import Select from './';
 
@@ -44,17 +39,14 @@ describe('Select Component', () => {
 
     fireEvent.click(container.querySelector('.Select'));
 
-    await (() =>
-      expect(container.querySelector('.Select__list').toBeInTheDocument()));
+    await (() => expect(container.querySelector('.Select__list').toBeInTheDocument()));
   });
 
   it('change action should fire onChange and onBlur actions', async () => {
     const { container } = render(<Select {...props} />);
     fireEvent.click(container.querySelector('.Select'));
 
-    const items = await waitForElement(() =>
-      container.querySelectorAll('.Select__list-item')
-    );
+    const items = await waitForElement(() => container.querySelectorAll('.Select__list-item'));
     fireEvent.click(items[0]);
 
     expect(props.onChange).toHaveBeenCalled();

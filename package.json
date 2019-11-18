@@ -16,6 +16,9 @@
     "webfontloader": "^1.6.28"
   },
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore . --ext js --ext jsx",
+    "lint:fix": "yarn lint --fix",
+    "stylelint": "stylelint 'src/**/*.scss'",
     "start": "yarn test:noWatch src/formStructure.test.js && react-scripts start",
     "build": "yarn test:noWatch src/formStructure.test.js && react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -24,7 +27,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:noWatch"
+      "pre-commit": "yarn lint && yarn test:noWatch"
     }
   },
   "eslintConfig": {
@@ -45,6 +48,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.3",
     "@testing-library/react": "^9.3.2",
+    "eslint": "^6.6.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "husky": "^3.0.9",
     "stylelint": "^11.1.1",
     "stylelint-config-standard": "^19.0.0",
