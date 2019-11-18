@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 
 import Input from './';
 
@@ -9,8 +9,8 @@ describe('Input Component', () => {
   const props = {
     name: 'Nickname',
     type: 'text',
-    onBlur: () => {},
-    onChange: () => {},
+    onBlur: jest.fn(),
+    onChange: jest.fn(),
   };
 
   it('renders in isolation without crashing', () => {
@@ -19,8 +19,32 @@ describe('Input Component', () => {
 
   it('renders label using name prop', async () => {
     const { getByText } = render(<Input {...props} />);
-    await (() => {
-      expect(getByText('Nickname')).toBeInTheDocument();
+    expect(getByText('Nickname')).toBeInTheDocument();
+  });
+
+  it('handles onChange and onBlur props properly', () => {
+    const { container } = render(<Input {...props} />);
+    const inputElement = container.querySelector('input');
+
+    fireEvent.change(inputElement, {
+      target: {
+        value: 'new value',
+      },
     });
+    expect(props.onChange).toHaveBeenCalled();
+
+    fireEvent.blur(inputElement);
+    expect(props.onBlur).toHaveBeenCalled();
+  });
+
+  it('focuses and blurs properly', async () => {
+    const { container } = render(<Input {...props} />);
+    const inputElement = container.querySelector('input');
+
+    inputElement.focus();
+    expect(inputElement).toHaveFocus();
+
+    inputElement.blur();
+    expect(inputElement).not.toHaveFocus();
   });
 });

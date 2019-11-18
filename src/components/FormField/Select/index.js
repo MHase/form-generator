@@ -56,14 +56,7 @@ const Select = ({
       onChange(name, '');
       onBlur(name, '');
     }
-  }, [
-    dependantValue,
-    customOptions.length,
-    dependant,
-    name,
-    onBlur,
-    onChange,
-  ]);
+  }, [dependantValue, customOptions.length, dependant, name, onBlur, onChange]);
 
   useEffect(() => {
     defineClasses({
@@ -76,25 +69,21 @@ const Select = ({
 
   return (
     <div
+      role="listbox"
+      tabIndex={0}
       ref={wrapperRef}
       className={cn('Select', { 'Select--open': optionsVisibility })}
-      onClick={() =>
-        !optionsVisibility && setOptionsVisibility(prevState => !prevState)
-      }
+      onClick={() => !optionsVisibility && setOptionsVisibility(prevState => !prevState)}
     >
-      <input
-        type="text"
-        className="Select__label"
-        readOnly
-        value={selectedItem.label || ''}
-      />
+      <input type="text" className="Select__label" readOnly value={selectedItem.label || ''} />
       {optionsVisibility && (
         <ul className="Select__list" data-testid="options-wrapper">
           {customOptions.map((item, i) => (
             <li
+              role="option"
+              aria-selected={selectedItem.value}
               className={cn('Select__list-item', {
-                'Select__list-item--selected':
-                  item.value === selectedItem.value,
+                'Select__list-item--selected': item.value === selectedItem.value,
               })}
               onClick={() => handleChange(item)}
               key={i}

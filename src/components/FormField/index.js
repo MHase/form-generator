@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import Input from "./Input";
-import Select from "./Select";
+import Input from './Input';
+import Select from './Select';
 
 const FormField = ({ ...props }) => {
   const { type } = props;
 
   switch (type) {
-    case "text":
-    case "email":
+    case 'text':
+    case 'email':
       return <Input {...props} />;
-    case "select":
+    case 'select':
       return <Select {...props} />;
     default:
       return null;

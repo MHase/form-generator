@@ -15,10 +15,7 @@ describe('JSON form structure', () => {
   )
     it('every field has not empty, required keys', () => {
       const passes = fields.every(field =>
-        requiredKeys.every(
-          requiredKey =>
-            Object.hasOwnProperty.call(field, requiredKey) && field[requiredKey]
-        )
+        requiredKeys.every(requiredKey => Object.hasOwnProperty.call(field, requiredKey) && field[requiredKey])
       );
 
       expect(passes).toBe(true);
@@ -36,10 +33,7 @@ describe('JSON form structure', () => {
 
   it('select has required fields', () => {
     const hasRequiredFields = selects.every(select =>
-      requiredSelectKeys.every(
-        requiredKey =>
-          Object.hasOwnProperty.call(select, requiredKey) && select[requiredKey]
-      )
+      requiredSelectKeys.every(requiredKey => Object.hasOwnProperty.call(select, requiredKey) && select[requiredKey])
     );
     expect(hasRequiredFields).toBeTruthy();
   });
@@ -64,16 +58,12 @@ describe('JSON form structure', () => {
 
       if (select.dependant) {
         const values = Object.values(options);
-        values.every(optionValue =>
-          expect(Array.isArray(optionValue)).toBeTruthy()
-        );
+        values.every(optionValue => expect(Array.isArray(optionValue)).toBeTruthy());
 
         values.forEach(optionArray => {
           optionArray.forEach(option => {
             const keys = Object.keys(option);
-            expect(
-              requiredOptionsKeys.every(key => keys.includes(key))
-            ).toBeTruthy();
+            expect(requiredOptionsKeys.every(key => keys.includes(key))).toBeTruthy();
           });
         });
       } else {

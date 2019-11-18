@@ -10,9 +10,7 @@ const defaultProps = {
   className: '',
 };
 
-const Json = ({ value, ...props }) => (
-  <pre {...props}>{JSON.stringify(value, undefined, 2)}</pre>
-);
+const Json = ({ value, ...props }) => <pre {...props}>{JSON.stringify(value, undefined, 2)}</pre>;
 
 Json.propTypes = propTypes;
 Json.defaultProps = defaultProps;

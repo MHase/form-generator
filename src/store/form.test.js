@@ -11,7 +11,7 @@ describe('Form reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it(`handles UPDATE_FORM correctly`, () => {
+  it('handles UPDATE_FORM correctly', () => {
     const payload = { name: 'Maciek', nickname: 'Coder' };
     const actual = reducer(state, updateField(payload));
 
@@ -23,7 +23,7 @@ describe('Form reducer', () => {
     });
   });
 
-  it(`handles RESET_FORM correctly`, () => {
+  it('handles RESET_FORM correctly', () => {
     const actual = reducer(state, clearValues());
 
     expect(actual).toEqual(initialState);
