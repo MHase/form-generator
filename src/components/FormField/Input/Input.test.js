@@ -15,7 +15,7 @@ describe('Input Component', () => {
     render(<Input {...props} />);
   });
 
-  it('renders label using name prop', async () => {
+  it('renders label using name prop', () => {
     const { getByText } = render(<Input {...props} />);
     expect(getByText('Nickname')).toBeInTheDocument();
   });
@@ -35,7 +35,7 @@ describe('Input Component', () => {
     expect(props.onBlur).toHaveBeenCalled();
   });
 
-  it('focuses and blurs properly', async () => {
+  it('focuses and blurs properly', () => {
     const { container } = render(<Input {...props} />);
     const inputElement = container.querySelector('input');
 
