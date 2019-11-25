@@ -1,12 +1,11 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import withFieldClasses from './';
 
 const TestComponent = () => <h1>hello</h1>;
 
 describe('withFieldClasses enhancer', () => {
-  afterEach(cleanup);
   const props = {
     name: 'Street',
     required: true,
