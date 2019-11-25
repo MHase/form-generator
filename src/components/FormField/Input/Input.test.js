@@ -1,11 +1,9 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Input from './';
 
 describe('Input Component', () => {
-  afterEach(cleanup);
-
   const props = {
     name: 'Nickname',
     type: 'text',

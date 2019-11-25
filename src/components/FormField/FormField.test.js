@@ -1,13 +1,11 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import FormField from './';
 import Input from './Input';
 import Select from './Select';
 
 describe('Input Component', () => {
-  afterEach(cleanup);
-
   const props = {
     name: 'Nickname',
     type: 'text',
