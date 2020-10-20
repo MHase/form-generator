@@ -9,5 +9,5 @@ export default (callback: EffectCallback, deps?: DependencyList) => {
     } else {
       callback();
     }
-  }, deps);
+  }, deps); // eslint-disable-line react-hooks/exhaustive-deps
 };
