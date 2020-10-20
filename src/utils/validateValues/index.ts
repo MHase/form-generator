@@ -1,8 +1,10 @@
 import { FormStructure, Value, Structure } from 'utils/formStoreStructure';
 
+type Constraint = Pick<Structure, 'type' | 'required' | 'minLength'>;
+
 export default (
   fields: FormStructure['values'],
-  constraints: FormStructure['structure']
+  constraints: { [key: string]: Constraint }
 ) =>
   Object.keys(fields).reduce<Record<string, string>>((acc, curr) => {
     // @ts-ignore
@@ -11,7 +13,7 @@ export default (
     return acc;
   }, {});
 
-const validateValue = (value: Value, constraint: Structure) => {
+const validateValue = (value: Value, constraint: Constraint) => {
   const { required, type, minLength } = constraint;
 
   if (required && !value) {

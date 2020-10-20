@@ -51,4 +51,5 @@ export const clearValues = () => ({
 
 export default reducer;
 
+export type Store = typeof reducer;
 export type RootState = typeof initialState;

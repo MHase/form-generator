@@ -1,4 +1,4 @@
-import validateValues from './';
+import validateValues from '.';
 
 describe('ValidateValues helper', () => {
   const constraints = {

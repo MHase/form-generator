@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from './';
+import Input from '.';
 
 describe('Input Component', () => {
   const props = {
@@ -22,7 +22,7 @@ describe('Input Component', () => {
 
   it('handles onChange and onBlur props properly', () => {
     const { container } = render(<Input {...props} />);
-    const inputElement = container.querySelector('input');
+    const inputElement = container.querySelector('input')!;
 
     fireEvent.change(inputElement, {
       target: {
@@ -37,7 +37,7 @@ describe('Input Component', () => {
 
   it('focuses and blurs properly', () => {
     const { container } = render(<Input {...props} />);
-    const inputElement = container.querySelector('input');
+    const inputElement = container.querySelector('input')!;
 
     inputElement.focus();
     expect(inputElement).toHaveFocus();

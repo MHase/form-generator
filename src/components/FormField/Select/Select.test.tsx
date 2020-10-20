@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Select from './';
+import Select from '.';
 
 describe('Select Component', () => {
   const dependantProps = {
@@ -46,14 +46,14 @@ describe('Select Component', () => {
   it('renders options list after wrapper click', () => {
     const { container } = render(<Select {...props} />);
 
-    fireEvent.click(container.querySelector('.Select'));
+    fireEvent.click(container.querySelector('.Select')!);
 
     expect(container.querySelector('.Select__list')).toBeInTheDocument();
   });
 
   it('change action should fire onChange and onBlur actions', () => {
     const { container } = render(<Select {...props} />);
-    fireEvent.click(container.querySelector('.Select'));
+    fireEvent.click(container.querySelector('.Select')!);
 
     const items = container.querySelectorAll('.Select__list-item');
     fireEvent.click(items[0]);

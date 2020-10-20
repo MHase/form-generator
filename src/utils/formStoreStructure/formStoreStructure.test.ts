@@ -1,4 +1,4 @@
-import formStoreStructure from './';
+import formStoreStructure from '.';
 
 describe('FormStoreStructure helper', () => {
   const fields = [

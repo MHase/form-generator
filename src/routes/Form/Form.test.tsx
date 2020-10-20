@@ -1,8 +1,6 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-
-import { renderWithRedux } from '../../utils/tests-utils';
-
+import { renderWithRedux } from 'utils/tests-utils';
 import Form from '.';
 
 describe('Form page', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
-import FormField from './';
+import FormField from '.';
 import Input from './Input';
 import Select from './Select';
 

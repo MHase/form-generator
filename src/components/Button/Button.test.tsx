@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Button from './';
+import Button from '.';
 
 describe('Button Component', () => {
   const label = 'Sample text';
