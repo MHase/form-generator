@@ -6,7 +6,7 @@ import WebFont from 'webfontloader';
 
 import formReducer from './store/form';
 
-import App from './components/App';
+import App from './components/App/App';
 
 import './style/main.scss';
 

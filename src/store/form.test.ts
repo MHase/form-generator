@@ -2,6 +2,7 @@ import reducer, { updateField, clearValues, initialState } from './form';
 
 describe('Form reducer', () => {
   const state = {
+    structure: {},
     values: {
       name: '',
     },
@@ -16,6 +17,7 @@ describe('Form reducer', () => {
     const actual = reducer(state, updateField(payload));
 
     expect(actual).toEqual({
+      structure: {},
       values: {
         name: 'Maciek',
         nickname: 'Coder',

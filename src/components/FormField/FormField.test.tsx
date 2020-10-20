@@ -1,9 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
-import FormField from './';
-import Input from './Input';
-import Select from './Select';
+import FormField from './FormField';
+import Input from './Input/Input';
+import Select from './Select/Select';
 
 describe('Input Component', () => {
   const props = {

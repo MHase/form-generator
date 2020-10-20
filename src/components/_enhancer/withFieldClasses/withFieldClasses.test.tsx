@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
-import withFieldClasses from './';
+import withFieldClasses from './withFieldClasses';
 
 const TestComponent = () => <h1>hello</h1>;
 
