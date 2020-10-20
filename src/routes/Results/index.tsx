@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RouteComponentProps } from '@reach/router';
-import Json from '../../components/Json/index';
+import Json from 'components/Json/index';
 
-import { clearValues, RootState } from '../../store/form';
+import { clearValues, RootState } from 'store/form';
 
 import './style.scss';
 

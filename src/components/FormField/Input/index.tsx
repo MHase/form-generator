@@ -9,7 +9,7 @@ import React, {
 
 import withFieldClasses, {
   WrapperComponentProps,
-} from '../../_enhancer/withFieldClasses/index';
+} from 'components/_enhancer/withFieldClasses/index';
 
 export interface InputProps
   extends WrapperComponentProps,

@@ -1,21 +1,21 @@
 import cn from 'classnames';
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import withFieldClasses, {
   WrapperComponentProps,
 } from 'components/_enhancer/withFieldClasses';
 import useOutsideClick from 'hooks/useOutsideClick';
-import { Option, SelectOptions } from 'utils/formStoreStructure/index';
+import { Option, SelectOptions, Value } from 'utils/formStoreStructure/index';
 import './style.scss';
 
-interface SelectProps extends WrapperComponentProps {
+export interface SelectProps extends WrapperComponentProps {
   name: string;
   options: SelectOptions;
   onChange: (name: string, value: string | number) => void;
   onBlur: (name: string, value: string | number) => void;
   error?: string;
   dependant?: string;
-  dependantValue?: string;
-  value?: string;
+  dependantValue?: Value;
+  value?: string | number;
 }
 
 const Select: FunctionComponent<SelectProps> = ({

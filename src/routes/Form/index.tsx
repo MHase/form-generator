@@ -6,11 +6,11 @@ import React, {
   FormEvent,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../components/Button';
-import FormField from '../../components/FormField';
-import Json from '../../components/Json/index';
-import { updateField, RootState } from '../../store/form';
-import validateValues from '../../utils/validateValues/index';
+import Button from 'components/Button';
+import FormField from 'components/FormField';
+import Json from 'components/Json/index';
+import { updateField, RootState } from 'store/form';
+import validateValues from 'utils/validateValues/index';
 import './style.scss';
 
 const Form: FunctionComponent<RouteComponentProps> = () => {

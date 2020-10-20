@@ -1,4 +1,4 @@
-import { fields } from '../../sampleForm.json';
+import { fields } from 'sampleForm.json';
 
 export interface Option {
   label: string;

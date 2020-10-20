@@ -1,4 +1,4 @@
-import formStoreStructure from '../utils/formStoreStructure/index';
+import formStoreStructure from 'utils/formStoreStructure/index';
 
 type Payload = object;
 
