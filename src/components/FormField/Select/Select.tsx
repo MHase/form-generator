@@ -4,6 +4,7 @@ import withFieldClasses, {
   WrapperComponentProps,
 } from 'components/_enhancer/withFieldClasses/withFieldClasses';
 import useOutsideClick from 'hooks/useOutsideClick';
+import useUpdate from 'hooks/useUpdate';
 import {
   Option,
   SelectOptions,
@@ -47,7 +48,7 @@ const Select: FunctionComponent<SelectProps> = ({
     onBlur(name, value);
   };
 
-  useEffect(() => {
+  useUpdate(() => {
     if (customOptions.length && dependant) {
       onChange(name, '');
       onBlur(name, '');

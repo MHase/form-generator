@@ -66,12 +66,12 @@ describe('Select Component', () => {
     render(<Select {...props} />);
     const { rerender } = render(<Select {...dependantProps} />);
 
-    expect(dependantProps.onChange).toHaveBeenCalledTimes(1);
-    expect(dependantProps.onBlur).toHaveBeenCalledTimes(1);
+    expect(dependantProps.onChange).toHaveBeenCalledTimes(0);
+    expect(dependantProps.onBlur).toHaveBeenCalledTimes(0);
 
     rerender(<Select {...dependantProps} dependantValue="content" />);
 
-    expect(dependantProps.onChange).toHaveBeenCalledTimes(2);
-    expect(dependantProps.onBlur).toHaveBeenCalledTimes(2);
+    expect(dependantProps.onChange).toHaveBeenCalledTimes(1);
+    expect(dependantProps.onBlur).toHaveBeenCalledTimes(1);
   });
 });
