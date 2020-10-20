@@ -1,4 +1,8 @@
-import { FormStructure, Value, Structure } from 'utils/formStoreStructure';
+import {
+  FormStructure,
+  Value,
+  Structure,
+} from 'utils/formStoreStructure/formStoreStructure';
 
 type Constraint = Pick<Structure, 'type' | 'required' | 'minLength'>;
 

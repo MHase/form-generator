@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
 import { renderWithRedux } from 'utils/tests-utils';
-import Form from '.';
+import Form from './Form';
 
 describe('Form page', () => {
   it('renders in isolation without crashing', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Select from '.';
+import Select from './Select';
 
 describe('Select Component', () => {
   const dependantProps = {

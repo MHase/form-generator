@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 
-import Input, { InputProps } from './Input/index';
-import Select, { SelectProps } from './Select';
+import Input, { InputProps } from './Input/Input';
+import Select, { SelectProps } from './Select/Select';
 
 type FormFieldProps = Partial<InputProps> & Partial<SelectProps>;
 

@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Router } from '@reach/router';
 
-import Form from 'routes/Form';
-import Results from 'routes/Results';
+import Form from 'routes/Form/Form';
+import Results from 'routes/Results/Results';
 
 import './style.scss';
 

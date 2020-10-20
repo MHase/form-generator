@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Input from '.';
+import Input from './Input';
 
 describe('Input Component', () => {
   const props = {

@@ -2,9 +2,13 @@ import cn from 'classnames';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import withFieldClasses, {
   WrapperComponentProps,
-} from 'components/_enhancer/withFieldClasses';
+} from 'components/_enhancer/withFieldClasses/withFieldClasses';
 import useOutsideClick from 'hooks/useOutsideClick';
-import { Option, SelectOptions, Value } from 'utils/formStoreStructure/index';
+import {
+  Option,
+  SelectOptions,
+  Value,
+} from 'utils/formStoreStructure/formStoreStructure';
 import './style.scss';
 
 export interface SelectProps extends WrapperComponentProps {
