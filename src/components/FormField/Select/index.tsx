@@ -1,51 +1,43 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { string, func, oneOfType, array, object } from 'prop-types';
 import cn from 'classnames';
-
-import useOutsideClick from '../../../hooks/useOutsideClick';
-
-import withFieldClasses from '../../_enhancer/withFieldClasses';
-
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import withFieldClasses, {
+  WrapperComponentProps,
+} from 'components/_enhancer/withFieldClasses';
+import useOutsideClick from 'hooks/useOutsideClick';
+import { Option, SelectOptions } from 'utils/formStoreStructure/index';
 import './style.scss';
 
-const propTypes = {
-  name: string.isRequired,
-  options: oneOfType([array, object]).isRequired,
-  onChange: func.isRequired,
-  onBlur: func.isRequired,
-  error: string,
-  dependant: string,
-  dependantValue: string,
-  value: string,
-};
+interface SelectProps extends WrapperComponentProps {
+  name: string;
+  options: SelectOptions;
+  onChange: (name: string, value: string | number) => void;
+  onBlur: (name: string, value: string | number) => void;
+  error?: string;
+  dependant?: string;
+  dependantValue?: string;
+  value?: string;
+}
 
-const defaultProps = {
-  error: '',
-  dependant: '',
-  dependantValue: '',
-  value: '',
-};
-
-const Select = ({
+const Select: FunctionComponent<SelectProps> = ({
   defineClasses,
   name,
   options,
   onChange,
   onBlur,
-  error,
-  dependant,
-  dependantValue,
-  value,
-  ...props
+  error = '',
+  dependant = '',
+  dependantValue = '',
+  value = '',
 }) => {
   const [optionsVisibility, setOptionsVisibility] = useState(false);
+  // @ts-ignore
   const customOptions = dependant ? options[dependantValue] || [] : options;
-  const selectedItem = customOptions.find(opt => opt.value === value) || {};
+  const selectedItem =
+    customOptions.find((opt: Option) => opt.value === value) || {};
 
-  const wrapperRef = useRef();
-  useOutsideClick(wrapperRef, () => setOptionsVisibility(false));
+  const wrapperRef = useOutsideClick(() => setOptionsVisibility(false));
 
-  const handleChange = ({ label, value }) => {
+  const handleChange = ({ value }: typeof customOptions) => {
     onChange(name, value);
     setOptionsVisibility(false);
     onBlur(name, value);
@@ -73,20 +65,28 @@ const Select = ({
       tabIndex={0}
       ref={wrapperRef}
       className={cn('Select', { 'Select--open': optionsVisibility })}
-      onClick={() => !optionsVisibility && setOptionsVisibility(prevState => !prevState)}
+      onClick={() =>
+        !optionsVisibility && setOptionsVisibility(prevState => !prevState)
+      }
     >
-      <input type="text" className="Select__label" readOnly value={selectedItem.label || ''} />
+      <input
+        type="text"
+        className="Select__label"
+        readOnly
+        value={selectedItem.label || ''}
+      />
       {optionsVisibility && (
         <ul className="Select__list" data-testid="options-wrapper">
-          {customOptions.map((item, i) => (
+          {customOptions.map((item: typeof customOptions, index: number) => (
             <li
               role="option"
               aria-selected={selectedItem.value}
               className={cn('Select__list-item', {
-                'Select__list-item--selected': item.value === selectedItem.value,
+                'Select__list-item--selected':
+                  item.value === selectedItem.value,
               })}
               onClick={() => handleChange(item)}
-              key={i}
+              key={index}
             >
               {item.label}
             </li>
@@ -96,8 +96,5 @@ const Select = ({
     </div>
   );
 };
-
-Select.propTypes = propTypes;
-Select.defaultProps = defaultProps;
 
 export default withFieldClasses(Select);

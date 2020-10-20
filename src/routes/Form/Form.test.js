@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react';
 
 import { renderWithRedux } from '../../utils/tests-utils';
 
-import Form from './';
+import Form from '.';
 
 describe('Form page', () => {
   it('renders in isolation without crashing', () => {

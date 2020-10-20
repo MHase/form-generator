@@ -1,4 +1,4 @@
-import reducer, { updateField, clearValues, initialState } from './form';
+import reducer, { updateField, clearValues, initialState } from './form.ts';
 
 describe('Form reducer', () => {
   const state = {

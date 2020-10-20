@@ -1,20 +1,21 @@
-import React, { useState, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { navigate } from '@reach/router';
-
-import { updateField } from '../../store/form';
-
-import FormField from '../../components/FormField';
+import { navigate, RouteComponentProps } from '@reach/router';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useState,
+  FormEvent,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../../components/Button';
-import Json from '../../components/Json';
-
-import validateValues from '../../utils/validateValues';
-
+import FormField from '../../components/FormField';
+import Json from '../../components/Json/index';
+import { updateField, RootState } from '../../store/form';
+import validateValues from '../../utils/validateValues/index';
 import './style.scss';
 
-const Form = () => {
-  const [errors, setErrors] = useState({});
-  const { values, structure } = useSelector(state => state);
+const Form: FunctionComponent<RouteComponentProps> = () => {
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { values, structure } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
   const onChange = useCallback(
@@ -38,7 +39,7 @@ const Form = () => {
     [structure]
   );
 
-  const submit = e => {
+  const submit = (e: FormEvent) => {
     e.preventDefault();
 
     const submitErrors = validateValues(values, structure);

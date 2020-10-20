@@ -1,15 +1,29 @@
-import formStoreStructure from '../utils/formStoreStructure';
+import formStoreStructure from '../utils/formStoreStructure/index';
+
+type Payload = object;
+
+interface UpdateAction {
+  type: typeof TYPES.updateForm;
+  payload: Payload;
+}
+
+interface ResetAction {
+  type: typeof TYPES.resetForm;
+  payload?: Payload;
+}
 
 const TYPES = {
   updateForm: 'UPDATE_FORM',
   resetForm: 'RESET_FORM',
 };
 
+type Action = UpdateAction | ResetAction;
+
 export const initialState = {
   ...formStoreStructure(),
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case TYPES.updateForm:
       return {
@@ -26,7 +40,7 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export const updateField = payload => ({
+export const updateField = (payload: Payload) => ({
   type: TYPES.updateForm,
   payload,
 });
@@ -36,3 +50,5 @@ export const clearValues = () => ({
 });
 
 export default reducer;
+
+export type RootState = typeof initialState;

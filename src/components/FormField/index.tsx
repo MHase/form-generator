@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-import Input from './Input';
+import Input, { InputProps } from './Input/index';
 import Select from './Select';
 
-const FormField = ({ ...props }) => {
+type FormFieldProps = Partial<InputProps>;
+
+const FormField: FunctionComponent<FormFieldProps> = ({ ...props }) => {
   const { type } = props;
 
   switch (type) {
