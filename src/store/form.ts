@@ -23,7 +23,7 @@ export const initialState = {
   ...formStoreStructure(),
 };
 
-const reducer = (state = initialState, action: Action) => {
+const reducer = (state = initialState, action: Partial<Action>) => {
   switch (action.type) {
     case TYPES.updateForm:
       return {
